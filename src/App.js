@@ -1,23 +1,30 @@
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import FolderStructure from './components/FolderStructure';
+import axios from 'axios'; // Import Axios
+import ReactFolderStructure from './components/ReactFolderStructure'
+
 
 function App() {
+
+  const [folderData, setFolderData] = useState(null);
+
+  // useEffect(() => {
+  //   // Use Axios to fetch data from Node.js backend endpoint
+  //   axios.get('http://localhost:3001/ftp/s3/folderStructure?accountName=ftp-root')
+  //     .then((response) => {
+  //       console.log(response.data.folderStructureObject);
+  //       setFolderData(response.data.folderStructureObject)
+  //     }
+  //     )
+  //     .catch((error) => console.error('Error fetching folder structure:', error));
+  // }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Folder Structure</h1>
+      <ReactFolderStructure data={folderData}></ReactFolderStructure>
     </div>
   );
 }
